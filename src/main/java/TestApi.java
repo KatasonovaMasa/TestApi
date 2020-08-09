@@ -33,5 +33,7 @@ public class TestApi {
                 .log().all()
                 .statusCode(201)
                 .body(matchesJsonSchemaInClasspath("JsonSchema.json"));
-   }
+   /*  ni*/
+
+    }
 }
