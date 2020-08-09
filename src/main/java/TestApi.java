@@ -3,7 +3,6 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-
 public class TestApi {
     @Test()
     public void testGet() {
@@ -11,7 +10,7 @@ public class TestApi {
                 given()
                         .log().all()
                         .when()
-                        .get("https://reqres.in/api/unknown")
+                        .get("https://reqres.in/api/users?page=2")
                         .then()
                         .log().all()
                         .statusCode(200)
@@ -23,8 +22,8 @@ public class TestApi {
     public void updateExistingPet() {
             given()
                 .body("{\n" +
-                        "    \"name\": \"morpheus\",\n" +
-                        "    \"job\": \"leader\"\n" +
+                        "    \"name\": \"Мария\",\n" +
+                        "    \"job\": \"Моё дело\"\n" +
                         "}")
                 .log().everything()
                 .contentType(ContentType.JSON)
@@ -34,6 +33,5 @@ public class TestApi {
                 .log().all()
                 .statusCode(201)
                 .body(matchesJsonSchemaInClasspath("JsonSchema.json"));
-            // изменения
    }
 }
